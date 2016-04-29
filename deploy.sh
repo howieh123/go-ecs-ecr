@@ -41,8 +41,8 @@ deploy_cluster() {
 make_task_def(){
 	task_template='[
 		{
-			"name": "go-sample-webapp",
-			"image": "%s.dkr.ecr.us-west-2.amazonaws.com/go-sample-webapp:%s",
+			"name": "circleci",
+			"image": "%s.dkr.ecr.us-west-2.amazonaws.com/circleci:%s",
 			"essential": true,
 			"memory": 200,
 			"cpu": 10,
@@ -60,7 +60,7 @@ make_task_def(){
 
 push_ecr_image(){
 	eval $(aws ecr get-login --region us-west-2)
-	docker push $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/go-sample-webapp:$CIRCLE_SHA1
+	docker push $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/circleci:$CIRCLE_SHA1
 }
 
 register_definition() {
